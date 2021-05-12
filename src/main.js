@@ -1,0 +1,49 @@
+// IMPORTAR LA PRIMERA ESCENA
+import Firstscene from './scenes/Firstscene.js'
+
+const config = {
+
+    // OPCIONALES
+    title: 'Narradores_Digitales',
+    url: 'url',
+    version: '0.0.1',
+
+    // OPCIONAL
+    pixelArt: true, // REMARCAR LOS PIXELES DE LAS IMAGENES
+
+    // OBLIGATORIO
+    type: Phaser.AUTO, // WEBGL O CANVAS O AUTOMATICO
+    width: 1366, // TAMAÑO DEL LIENZO
+    height: 768,
+    parent: 'container', // ID DEL CONTENEDOR
+    backgroundColor: '#56CDFF', // FONDO DEL LIENZO
+
+    // INFORMACIÓN DE LA CONSOLA
+    banner: {
+        hidePhaser: true, // OCULTAR TEXTO DE PHASER EN CONSOLA
+        text: '#000000', // CAMBIAR COLOR DEL TEXTO DEL TITULO DEL JUEGO EN CONSOLA
+         // PALETA DE COLORES DE ADORNO EN CONSOLA
+        background: [
+            'red',
+            'yellow',
+            'red',
+            'transparent'
+        ]
+       
+    },
+    physics: {
+        default: 'arcade',
+        arcade: {
+            // gravity: { y: 300 },
+            debug: false
+        }
+    },
+
+    //ESCENAS DEL JUEGO
+    scene: [Firstscene]
+};
+
+// CREAR LA INSTANCIA DEL JUEGO
+const game = new Phaser.Game(config);
+
+

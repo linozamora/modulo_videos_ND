@@ -1,0 +1,16 @@
+{
+  "name": "Narracion - Narradores Digitales",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "lino.zamora",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^3.53.1",
+    "phaser3-rex-plugins": "^1.1.46"
+  }
+}
