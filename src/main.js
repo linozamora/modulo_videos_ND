@@ -43,6 +43,7 @@ const config = {
     scene: [Firstscene]
 };
 
+
 // CREAR LA INSTANCIA DEL JUEGO
 const game = new Phaser.Game(config);
 

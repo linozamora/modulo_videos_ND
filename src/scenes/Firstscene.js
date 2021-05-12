@@ -1,4 +1,4 @@
-class Firstscene extends Phaser.Scene {
+class Firstscene extends Phaser.Scene  {
 
     constructor() {
         super('Firstscene');
@@ -12,6 +12,7 @@ class Firstscene extends Phaser.Scene {
 
     preload() {
 
+        
         // LOAD IMAGES AND SPRITES
 
         this.load.image('background', 'assets/background.png')
@@ -52,6 +53,7 @@ class Firstscene extends Phaser.Scene {
         // CREATE KEYBOARD CURSOS
         this.keys = this.input.keyboard.addKeys('A,W,S,D');
         this.cursors = this.input.keyboard.createCursorKeys();
+        this.anims2 = this.anims;
         //var keys = this.input.keyboard.addKeys('A,W,S,D');
 
         //SECOND PLAYER CONTROLS
@@ -67,22 +69,22 @@ class Firstscene extends Phaser.Scene {
             defaultKey: 'virus'
         });
 
-        this.player = this.physics.add.sprite(this.sys.game.canvas.width / 2, this.sys.game.canvas.height, 'boysprite')
+        this.player = this.physics.add.sprite(this.sys.game.canvas.width / 3, this.sys.game.canvas.height, 'boysprite')
             .setBounce(0.2)
             .setCollideWorldBounds(true)
-            .setGravityY(300)
-            .setDepth(1);
+            .setGravityY(500)
+            .setDepth(10);
 
         this.animatePlayer();
 
         this.player2 = this.physics.add
-        this.player2 = this.physics.add.sprite(this.sys.game.canvas.width / 2, this.sys.game.canvas.height, 'boysprite')
+        this.player2 = this.physics.add.sprite(this.sys.game.canvas.width / 2, this.sys.game.canvas.height, 'girlsprite')
             .setBounce(0.2)
             .setCollideWorldBounds(true)
-            .setGravityY(300)
-            .setDepth(1);
+            .setGravityY(500)
+            .setDepth(10);
 
-        this.animatePlayer(); //HERE´S THE DIMENSION ERROR 
+        this.animatePlayer2(); //HERE´S THE DIMENSION ERROR 
 
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet'
@@ -126,7 +128,7 @@ class Firstscene extends Phaser.Scene {
             this.player.setVelocityX(0)
                 .anims.play('turn');
         }
-        //PLAYER 2
+        //---PLAYER 2 CONTROLS---- 
         if (this.keys.A.isDown) {
             this.player2.setVelocityX(-160)
                 .anims.play('left', true);
@@ -155,6 +157,7 @@ class Firstscene extends Phaser.Scene {
         this.scene.pause();
     }
 
+    
 
     animatePlayer() {
         this.anims.create({
@@ -185,26 +188,26 @@ class Firstscene extends Phaser.Scene {
         });
         
 
-    }
+    } //problem 
     animatePlayer2() {
-        this.anims.create({
+        this.anims2.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('girlsprite', { start: 0, end: 3 }),
+            frames: this.anims2.generateFrameNumbers('girlsprite', { start: 0, end: 3 }),
             frameRate: 10,
             repeat: -1
 
         });
 
-        this.anims.create({
+        this.anims2.create({
             key: 'turn',
             frames: [{ key: 'girlsprite', frame: 4 }],
             frameRate: 20,
             // delay: 1.1
         });
 
-        this.anims.create({
+        this.anims2.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('girlsprite', { start: 5, end: 8 }),
+            frames: this.anims2.generateFrameNumbers('girlsprite', { start: 5, end: 8 }),
             frameRate: 10,
             repeat: -1
         });
