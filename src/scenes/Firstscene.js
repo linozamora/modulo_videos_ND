@@ -19,9 +19,9 @@ class Firstscene extends Phaser.Scene  {
             //.image("bullet", "assets/bullet.png")
             //.image("virus", "assets/virus.png")
             .spritesheet('boysprite', 'assets/boysprite.png',
-                { frameWidth: 80.308, frameHeight: 214 })
+                { frameWidth: 95, frameHeight: 230 })
             .spritesheet('girlsprite', 'assets/girlsprite.png',
-                { frameWidth: 80.308, frameHeight: 214 });
+                { frameWidth: 95, frameHeight: 230 });
 
         // LOAD AUDIOS
 
