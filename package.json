@@ -12,6 +12,7 @@
   "dependencies": {
     "ccapture.js": "^1.1.0",
     "phaser": "^3.53.1",
+    "phaser-capture": "^0.0.2",
     "phaser3-rex-plugins": "^1.1.46"
   }
 }

@@ -12,7 +12,7 @@ const config = {
     pixelArt: true, // REMARCAR LOS PIXELES DE LAS IMAGENES
 
     // OBLIGATORIO
-    type: Phaser.AUTO, // WEBGL O CANVAS O AUTOMATICO
+    type: Phaser.CANVAS, // WEBGL O CANVAS O AUTOMATICO
     width: 1366, // TAMAÑO DEL LIENZO
     height: 768,
     parent: 'container', // ID DEL CONTENEDOR
@@ -31,7 +31,11 @@ const config = {
         ]
        
     },
-    physics: {
+    scale: {    // CONFIGURACIÓN PARA RESPONSIVE
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+    physics: {  //CONFIGURACIÓN DE FISICAS DEL PERSONAJE --- GRAVEDAD GENERAL
         default: 'arcade',
         arcade: {
             // gravity: { y: 300 },
@@ -42,7 +46,6 @@ const config = {
     //ESCENAS DEL JUEGO
     scene: [Firstscene]
 };
-
 
 // CREAR LA INSTANCIA DEL JUEGO
 const game = new Phaser.Game(config);
