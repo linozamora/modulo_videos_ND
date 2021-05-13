@@ -77,7 +77,7 @@ class Firstscene extends Phaser.Scene  {
 
         this.animatePlayer();
 
-        this.player2 = this.physics.add
+        //this.player2 = this.physics.add
         this.player2 = this.physics.add.sprite(this.sys.game.canvas.width / 2, this.sys.game.canvas.height, 'girlsprite')
             .setBounce(0.2)
             .setCollideWorldBounds(true)
