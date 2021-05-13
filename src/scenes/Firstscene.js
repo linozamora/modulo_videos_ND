@@ -19,9 +19,9 @@ class Firstscene extends Phaser.Scene  {
             //.image("bullet", "assets/bullet.png")
             //.image("virus", "assets/virus.png")
             .spritesheet('boysprite', 'assets/boysprite.png',
-                { frameWidth: 86, frameHeight: 210 })
+                { frameWidth: 80.308, frameHeight: 214 })
             .spritesheet('girlsprite', 'assets/girlsprite.png',
-                { frameWidth: 118, frameHeight: 210 });
+                { frameWidth: 80.308, frameHeight: 214 });
 
         // LOAD AUDIOS
 
@@ -204,6 +204,12 @@ class Firstscene extends Phaser.Scene  {
             frameRate: 20,
             // delay: 1.1
         });
+        this.anims2.create({
+            key: 'jump',
+            frames: [{ key: 'girlsprite', frame: 10 }],
+            frameRate: 20,
+            // delay: 1.1
+        });
 
         this.anims2.create({
             key: 'right',
@@ -213,6 +219,7 @@ class Firstscene extends Phaser.Scene  {
         });
 
     }
+
 }
 
 export default Firstscene;
