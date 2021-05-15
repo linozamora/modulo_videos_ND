@@ -11,16 +11,15 @@ class Firstscene extends Phaser.Scene  {
     }
 
     preload() {
-
-        
         // LOAD IMAGES AND SPRITES
+        
 
-        this.load.image('background', 'assets/background.png')
+       this.load.image('background', 'assets/background.png')
             //.image("bullet", "assets/bullet.png")
             //.image("virus", "assets/virus.png")
             .spritesheet('boysprite', 'assets/boysprite.png',
-                { frameWidth: 95, frameHeight: 230 })
-            .spritesheet('girlsprite', 'assets/girlsprite.png',
+                { frameWidth: 95, frameHeight: 230 }),
+            this.load.spritesheet('girlsprite', 'assets/girlsprite.png',
                 { frameWidth: 95, frameHeight: 230 });
 
         // LOAD AUDIOS
@@ -30,7 +29,6 @@ class Firstscene extends Phaser.Scene  {
         //         .audio('killed',['assets/killed.wav'])
         //         .audio('rebound',['assets/rebound.wav'])
         //         .audio('bgmusic',['assets/bgmusic.mp3']);
-
 
 
     }
@@ -54,7 +52,6 @@ class Firstscene extends Phaser.Scene  {
         this.keys = this.input.keyboard.addKeys('A,W,S,D');
         this.cursors = this.input.keyboard.createCursorKeys();
         this.anims2 = this.anims;
-        //var keys = this.input.keyboard.addKeys('A,W,S,D');
 
         //SECOND PLAYER CONTROLS
         //upButton = game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -65,9 +62,9 @@ class Firstscene extends Phaser.Scene  {
         // CREATE SPRITES
 
         this.background = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'background');
-        this.virus = this.physics.add.group({
-            defaultKey: 'virus'
-        });
+        //this.virus = this.physics.add.group({
+        //    defaultKey: 'virus'
+        //});
 
         this.player = this.physics.add.sprite(this.sys.game.canvas.width / 3, this.sys.game.canvas.height, 'boysprite')
             .setBounce(0.2)
@@ -95,9 +92,6 @@ class Firstscene extends Phaser.Scene  {
 
         //this.physics.add.collider(this.player, this.virus, this.hitPlayer, null, this);
         //this.physics.add.collider(this.bullets, this.virus, this.hitvirus, null, this);
-
-
-
 
 
     }

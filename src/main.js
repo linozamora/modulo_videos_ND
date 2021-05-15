@@ -1,5 +1,9 @@
 // IMPORTAR LA PRIMERA ESCENA
 import Firstscene from './scenes/Firstscene.js'
+import gameboy from './scenes/gameboy.js';
+import MenuselectorS from './scenes/MenuselectorS.js';
+import Start from './scenes/Start.js';
+//import Start from './scenes/Start.js';
 
 const config = {
 
@@ -14,7 +18,7 @@ const config = {
     // OBLIGATORIO
     type: Phaser.CANVAS, // WEBGL O CANVAS O AUTOMATICO
     width: 1366, // TAMAÑO DEL LIENZO
-    height: 768,
+    height: 740,
     parent: 'container', // ID DEL CONTENEDOR
     backgroundColor: '#56CDFF', // FONDO DEL LIENZO
 
@@ -44,7 +48,7 @@ const config = {
     },
 
     //ESCENAS DEL JUEGO
-    scene: [Firstscene]
+    scene: [Start, MenuselectorS, Firstscene]
 };
 
 // CREAR LA INSTANCIA DEL JUEGO
