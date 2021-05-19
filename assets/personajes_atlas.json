@@ -1,0 +1,60 @@
+{
+    "frames": [
+        {
+            "filename": "boy",
+            "frame": {
+                "w": 99,
+                "h": 183,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "boy2",
+            "frame": {
+                "w": 93,
+                "h": 183,
+                "x": 99,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "girl1",
+            "frame": {
+                "w": 99,
+                "h": 185,
+                "x": 192,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "girl2",
+            "frame": {
+                "w": 95,
+                "h": 178,
+                "x": 291,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
