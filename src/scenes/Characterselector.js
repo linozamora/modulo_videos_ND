@@ -62,6 +62,11 @@ class Characterselector extends Phaser.Scene {
             Phaser.Utils.Array.RotateLeft(points);
         });
         //graphics.strokeEllipseShape(elipse, totalItems);  //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
+        this.start = this.input.keyboard.once('keydown-SPACE', this.handleContinue, this);
     }
+    handleContinue()
+	{
+		this.scene.start('Firstscene', { character: this.selectedKey });
+	}
 }
 export default Characterselector;

@@ -50,7 +50,7 @@ const config = {
     },
 
     //ESCENAS DEL JUEGO
-    scene: [Characterselector, Firstscene]
+    scene: [Sceneselector, Characterselector, Firstscene]
 };
 
 // CREAR LA INSTANCIA DEL JUEGO
