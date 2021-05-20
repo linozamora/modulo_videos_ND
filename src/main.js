@@ -5,7 +5,7 @@ import gameboy from './scenes/gameboy.js';
 import MenuselectorS from './scenes/MenuselectorS.js';
 import Sceneselector from './scenes/Sceneselector.js';
 import Start from './scenes/Start.js';
-//import Start from './scenes/Start.js';
+
 
 const config = {
 
