@@ -1,10 +1,10 @@
 {
     "frames": [
         {
-            "filename": "boy",
+            "filename": "personajes_0",
             "frame": {
-                "w": 99,
-                "h": 183,
+                "w": 215,
+                "h": 467,
                 "x": 0,
                 "y": 0
             },
@@ -14,11 +14,11 @@
             }
         },
         {
-            "filename": "boy2",
+            "filename": "personajes_1",
             "frame": {
-                "w": 93,
-                "h": 183,
-                "x": 99,
+                "w": 215,
+                "h": 467,
+                "x": 215,
                 "y": 0
             },
             "anchor": {
@@ -27,11 +27,11 @@
             }
         },
         {
-            "filename": "girl1",
+            "filename": "personajes_2",
             "frame": {
-                "w": 99,
-                "h": 185,
-                "x": 192,
+                "w": 215,
+                "h": 467,
+                "x": 430,
                 "y": 0
             },
             "anchor": {
@@ -40,11 +40,37 @@
             }
         },
         {
-            "filename": "girl2",
+            "filename": "personajes_3",
             "frame": {
-                "w": 95,
-                "h": 178,
-                "x": 291,
+                "w": 215,
+                "h": 467,
+                "x": 645,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "personajes_4",
+            "frame": {
+                "w": 215,
+                "h": 467,
+                "x": 860,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "personajes_5",
+            "frame": {
+                "w": 215,
+                "h": 467,
+                "x": 1075,
                 "y": 0
             },
             "anchor": {
