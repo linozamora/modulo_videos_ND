@@ -15,7 +15,7 @@ class Characterselector extends Phaser.Scene {
             xRadius: 300,
             yRadius: 120
         });
-        const totalItems = 6;
+        const totalItems = 4;
         const points = elipse.getPoints(totalItems);
         points.pop();
         //console.log(points);
