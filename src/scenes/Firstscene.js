@@ -1,4 +1,10 @@
-class Firstscene extends Phaser.Scene  {
+import Countdown from "./Countdown.js";
+
+class Firstscene extends Phaser.Scene {
+
+    /** @type {Countdown} */
+    countdown
+    matchesCount = 0
 
     constructor() {
         super('Firstscene');
@@ -12,9 +18,8 @@ class Firstscene extends Phaser.Scene  {
 
     preload() {
         // LOAD IMAGES AND SPRITES
-        
 
-       this.load.image('background', 'assets/background.png')
+        this.load.image('background', 'assets/background.png')
             //.image("bullet", "assets/bullet.png")
             //.image("virus", "assets/virus.png")
             .spritesheet('boysprite', 'assets/boysprite.png',
@@ -35,6 +40,12 @@ class Firstscene extends Phaser.Scene  {
 
     create() {
 
+        const { width, height } = this.scale
+
+        const timerLabel = this.add.text(width * 0.5, 50, '45', { fontSize: 48 }).setOrigin(0.5)
+
+        this.countdown = new Countdown(this, timerLabel)
+        this.countdown.start(this.handleCowntdownFinished.bind(this))
         // CREATE AUDIOS
 
         //this.popSound = this.sound.add('pop');
@@ -49,7 +60,7 @@ class Firstscene extends Phaser.Scene  {
         //this.backgroundMusic.play();
 
         // CREATE KEYBOARD CURSOS
-        this.keys = this.input.keyboard.addKeys('A,W,S,D');
+        this.keys = this.input.keyboard.addKeys('A,W,S,D,F');
         this.cursors = this.input.keyboard.createCursorKeys();
         this.anims2 = this.anims;
 
@@ -113,10 +124,10 @@ class Firstscene extends Phaser.Scene  {
             this.player.setVelocityX(160)
                 .anims.play('right', true);
         }
-        else if (this.cursors.up.isDown){
+        else if (this.cursors.up.isDown) {
             this.player.setVelocity(-160)
             this.player.setVelocityX(0)
-            .anims.play('jump', true);
+                .anims.play('jump', true);
         }
         else {
             this.player.setVelocityX(0)
@@ -131,15 +142,30 @@ class Firstscene extends Phaser.Scene  {
             this.player2.setVelocityX(160)
                 .anims.play('right', true);
         }
-        else if (this.keys.W.isDown){
+        else if (this.keys.W.isDown) {
             this.player2.setVelocity(-160)
             this.player2.setVelocityX(0)
-            .anims.play('jump', true);
+                .anims.play('jump', true);
         }
         else {
             this.player2.setVelocityX(0)
                 .anims.play('turn');
         }
+        if (this.keys.F.isDown) {
+            const { width, height } = this.scale
+            this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
+            this.scene.pause();
+        }
+        this.countdown.update()
+        console.log(this.timerLabel)
+    }
+
+
+    handleCowntdownFinished() {
+        const { width, height } = this.scale
+        this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
+        this.scene.pause();
+
     }
 
 
@@ -151,7 +177,7 @@ class Firstscene extends Phaser.Scene  {
         this.scene.pause();
     }
 
-    
+
 
     animatePlayer() {
         this.anims.create({
@@ -180,7 +206,7 @@ class Firstscene extends Phaser.Scene  {
             frameRate: 10,
             repeat: -1
         });
-        
+
 
     } //problem 
     animatePlayer2() {
@@ -211,6 +237,7 @@ class Firstscene extends Phaser.Scene  {
             frameRate: 10,
             repeat: -1
         });
+
 
     }
 
