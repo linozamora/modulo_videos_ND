@@ -183,10 +183,10 @@ class Firstscene extends Phaser.Scene {
         const { width, height } = this.scale
        // this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
         //No funciona porque no elimina lo personajes
-        this.add.image( width * 0.5, height * 0.5, 'final'  ) 
-
-    
-        this.scene.pause();
+        this.add.image( width * 0.5, height * 0.5, 'final' ) 
+        this.player.visible = false
+        this.player2.visible = false
+        //this.scene.pause();
 
     }
 
