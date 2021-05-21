@@ -20,12 +20,16 @@ class Firstscene extends Phaser.Scene {
         // LOAD IMAGES AND SPRITES
 
         this.load.image('background', 'assets/background.png')
+                .image('pausa','assets/pausa.png')
+                .image('play','assets/play.png')
+                .image('final','assets/final.png')
             //.image("bullet", "assets/bullet.png")
             //.image("virus", "assets/virus.png")
             .spritesheet('boysprite', 'assets/boysprite.png',
                 { frameWidth: 95, frameHeight: 230 }),
             this.load.spritesheet('girlsprite', 'assets/girlsprite.png',
                 { frameWidth: 95, frameHeight: 230 });
+
 
         // LOAD AUDIOS
 
@@ -97,6 +101,7 @@ class Firstscene extends Phaser.Scene {
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet'
         });
+        
 
 
         // ADD COLIDERS BETWEEN SPRITES
@@ -153,9 +158,22 @@ class Firstscene extends Phaser.Scene {
         }
         if (this.keys.F.isDown) {
             const { width, height } = this.scale
-            this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
-            this.scene.pause();
+            //this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
+            this.add.image( width * 0.5, height * 0.5, 'pausa');  
+        
         }
+       // else if (this.keys.P.isDown){
+       //     this.player.setVelocity(0, 0)
+       //         .anims.play('turn');
+        
+       // }
+        //if(this.keys.P.isDown){
+           
+        
+       // this.add.image( width * 0.5, height * 0.5, 'play'  
+        //);
+                       
+        //}
         this.countdown.update()
         console.log(this.timerLabel)
     }
@@ -164,6 +182,10 @@ class Firstscene extends Phaser.Scene {
     handleCowntdownFinished() {
         const { width, height } = this.scale
         this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
+        //No funciona porque no elimina lo personajes
+       // this.add.image( width * 0.5, height * 0.5, 'final'  ) 
+
+    
         this.scene.pause();
 
     }
