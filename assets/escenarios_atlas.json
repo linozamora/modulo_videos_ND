@@ -4,7 +4,7 @@
             "filename": "escenarios_0",
             "frame": {
                 "w": 400,
-                "h": 495,
+                "h": 444,
                 "x": 0,
                 "y": 0
             },
@@ -17,7 +17,7 @@
             "filename": "escenarios_1",
             "frame": {
                 "w": 400,
-                "h": 495,
+                "h": 444,
                 "x": 400,
                 "y": 0
             },
@@ -30,7 +30,7 @@
             "filename": "escenarios_2",
             "frame": {
                 "w": 400,
-                "h": 495,
+                "h": 444,
                 "x": 800,
                 "y": 0
             },
@@ -43,7 +43,7 @@
             "filename": "escenarios_3",
             "frame": {
                 "w": 400,
-                "h": 495,
+                "h": 444,
                 "x": 1200,
                 "y": 0
             },

@@ -1,18 +1,16 @@
-class Sceneselector extends Phaser.Scene{
-    constructor(){
-        super({key : 'Sceneselector'});
+class Characterselector2 extends Phaser.Scene {
+    constructor() {
+        super({ key: 'Characterselector2' });
     }
     preload(){
-        this.load.atlas('escenarios', './assets/escenarios.png', './assets/escenarios_atlas.json')
-        this.load.image('backesc', 'assets/backesc.png');
-
+        this.load.atlas('personajes', './assets/personajes.png', './assets/personajes_atlas.json')
+        this.load.image('backgpers2', 'assets/backpers2.png');
     }
     create(){
-        //const graphics = this.add.graphics({      //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
-        //    lineStyle: {width:2, color: 0x00ff00} //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
-        //});                                       //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
-
-        this.backg = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'backesc');
+        //const graphics = this.add.graphics({          //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
+        //    lineStyle: {width:2, color: 0x00ff00}     //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
+        //});                                           //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
+        this.backg = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'backgpers2');
         const elipse = new Phaser.Curves.Ellipse({
             x:683,
             y:370,
@@ -33,7 +31,7 @@ class Sceneselector extends Phaser.Scene{
         //console.log('punto minimo', minY , 'punto maximo', maxY);
 
         const images = points.map((point, index) => {
-            const image = this.add.image(point.x, point.y, 'escenarios', 'escenarios_' + index);
+            const image = this.add.image(point.x, point.y, 'personajes', 'personajes_' + index);
             image.setScale(0.5 + scaleRange * (point.y - minY));
             image.setAlpha(alphaRange * (point.y - minY));
             image.setDepth(point.y);
@@ -65,12 +63,12 @@ class Sceneselector extends Phaser.Scene{
             });
             Phaser.Utils.Array.RotateLeft(points);
         });
-        //graphics.strokeEllipseShape(elipse, totalItems); //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
+        //graphics.strokeEllipseShape(elipse, totalItems);  //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
         this.start = this.input.keyboard.once('keydown-SPACE', this.handleContinue, this);
     }
     handleContinue()
 	{
-		this.scene.start('Characterselector', { character: this.selectedKey });
+		this.scene.start('Firstscene', { character: this.selectedKey });
 	}
 }
-export default Sceneselector;
+export default Characterselector2;

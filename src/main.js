@@ -1,5 +1,6 @@
 // IMPORTAR LA PRIMERA ESCENA
 import Characterselector from './scenes/Characterselector.js';
+import Characterselector2 from './scenes/Characterselector2.js';
 import Firstscene from './scenes/Firstscene.js'
 import gameboy from './scenes/gameboy.js';
 import MenuselectorS from './scenes/MenuselectorS.js';
@@ -50,7 +51,8 @@ const config = {
     },
 
     //ESCENAS DEL JUEGO
-    scene: [Start, Sceneselector, Characterselector, Firstscene]
+    scene: [Start, Sceneselector, Characterselector, 
+        Characterselector2, Firstscene]
 };
 
 // CREAR LA INSTANCIA DEL JUEGO

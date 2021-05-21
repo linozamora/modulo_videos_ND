@@ -4,11 +4,13 @@ class Characterselector extends Phaser.Scene {
     }
     preload(){
         this.load.atlas('personajes', './assets/personajes.png', './assets/personajes_atlas.json')
+        this.load.image('backgpers', 'assets/backpers1.png');
     }
     create(){
         //const graphics = this.add.graphics({          //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
         //    lineStyle: {width:2, color: 0x00ff00}     //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
         //});                                           //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
+        this.backg = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'backgpers');
         const elipse = new Phaser.Curves.Ellipse({
             x:683,
             y:370,
@@ -66,7 +68,7 @@ class Characterselector extends Phaser.Scene {
     }
     handleContinue()
 	{
-		this.scene.start('Firstscene', { character: this.selectedKey });
+		this.scene.start('Characterselector2', { character: this.selectedKey });
 	}
 }
 export default Characterselector;

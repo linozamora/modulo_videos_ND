@@ -3,8 +3,8 @@
         {
             "filename": "personajes_0",
             "frame": {
-                "w": 215,
-                "h": 467,
+                "w": 180,
+                "h": 391,
                 "x": 0,
                 "y": 0
             },
@@ -16,9 +16,9 @@
         {
             "filename": "personajes_1",
             "frame": {
-                "w": 215,
-                "h": 467,
-                "x": 215,
+                "w": 180,
+                "h": 391,
+                "x": 180,
                 "y": 0
             },
             "anchor": {
@@ -29,9 +29,9 @@
         {
             "filename": "personajes_2",
             "frame": {
-                "w": 215,
-                "h": 467,
-                "x": 430,
+                "w": 180,
+                "h": 391,
+                "x": 360,
                 "y": 0
             },
             "anchor": {
@@ -42,35 +42,9 @@
         {
             "filename": "personajes_3",
             "frame": {
-                "w": 215,
-                "h": 467,
-                "x": 645,
-                "y": 0
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "personajes_4",
-            "frame": {
-                "w": 215,
-                "h": 467,
-                "x": 860,
-                "y": 0
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "personajes_5",
-            "frame": {
-                "w": 215,
-                "h": 467,
-                "x": 1075,
+                "w": 180,
+                "h": 391,
+                "x": 540,
                 "y": 0
             },
             "anchor": {
@@ -78,6 +52,7 @@
                 "y": 0.5
             }
         }
+        
     ],
     "meta": {
         "description": "Atlas generado con Atlas Packer Gamma V2",
