@@ -108,7 +108,7 @@ class Firstscene extends Phaser.Scene {
 
         //this.physics.add.collider(this.player, this.virus, this.hitPlayer, null, this);
         //this.physics.add.collider(this.bullets, this.virus, this.hitvirus, null, this);
-
+        this.start = this.input.keyboard.once('keydown-SPACE', this.handleContinue, this);
 
     }
 
@@ -181,9 +181,9 @@ class Firstscene extends Phaser.Scene {
 
     handleCowntdownFinished() {
         const { width, height } = this.scale
-        this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
+       // this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
         //No funciona porque no elimina lo personajes
-       // this.add.image( width * 0.5, height * 0.5, 'final'  ) 
+        this.add.image( width * 0.5, height * 0.5, 'final'  ) 
 
     
         this.scene.pause();
@@ -199,7 +199,10 @@ class Firstscene extends Phaser.Scene {
         this.scene.pause();
     }
 
-
+    handleContinue()
+	{
+		this.scene.start('Fin', { character: this.selectedKey });
+	}
 
     animatePlayer() {
         this.anims.create({

@@ -11,6 +11,8 @@ class Characterselector extends Phaser.Scene {
         //    lineStyle: {width:2, color: 0x00ff00}     //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
         //});                                           //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
         this.backg = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'backgpers');
+       // this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
+
         const elipse = new Phaser.Curves.Ellipse({
             x:683,
             y:370,
@@ -35,9 +37,12 @@ class Characterselector extends Phaser.Scene {
             image.setScale(0.5 + scaleRange * (point.y - minY));
             image.setAlpha(alphaRange * (point.y - minY));
             image.setDepth(point.y);
+            
+
 
             return image;
         });
+
         this.input.on(Phaser.Input.Events.POINTER_DOWN, () => {
             points.forEach((p, index) => {
                 const finalPoint = (index === points.length - 1);

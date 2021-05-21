@@ -6,6 +6,7 @@ import gameboy from './scenes/gameboy.js';
 import MenuselectorS from './scenes/MenuselectorS.js';
 import Sceneselector from './scenes/Sceneselector.js';
 import Start from './scenes/Start.js';
+import Fin from './scenes/Fin.js';
 import Countdown from './scenes/Countdown.js';
 
 
@@ -53,7 +54,7 @@ const config = {
 
     //ESCENAS DEL JUEGO
     scene: [Start, Sceneselector, Characterselector, 
-        Characterselector2, Firstscene]
+        Characterselector2, Firstscene, Fin]
 };
 
 // CREAR LA INSTANCIA DEL JUEGO
