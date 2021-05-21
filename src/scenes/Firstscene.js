@@ -243,6 +243,6 @@ class Firstscene extends Phaser.Scene {
 
 }
 
-export default Firstscene;
+export default Firstscene; //
 
 
