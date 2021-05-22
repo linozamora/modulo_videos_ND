@@ -20,9 +20,7 @@ class Firstscene extends Phaser.Scene {
         // LOAD IMAGES AND SPRITES
 
         this.load.image('background', 'assets/background.png')
-                .image('pausa','assets/pausa.png')
-                .image('play','assets/play.png')
-                .image('final','assets/final.png')
+                 .image('final','assets/final.png')
             //.image("bullet", "assets/bullet.png")
             //.image("virus", "assets/virus.png")
             .spritesheet('boysprite', 'assets/boysprite.png',
@@ -159,7 +157,7 @@ class Firstscene extends Phaser.Scene {
         if (this.keys.F.isDown) {
             const { width, height } = this.scale
             //this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
-            this.add.image( width * 0.5, height * 0.5, 'pausa');  
+            this.add.image( width * 0.5, height * 0.5, 'final');  
         
         }
        // else if (this.keys.P.isDown){
