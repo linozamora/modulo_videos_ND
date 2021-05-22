@@ -157,7 +157,9 @@ class Firstscene extends Phaser.Scene {
         if (this.keys.F.isDown) {
             const { width, height } = this.scale
             //this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
-            this.add.image( width * 0.5, height * 0.5, 'final');  
+            this.add.image( width * 0.5, height * 0.5, 'final')
+            this.player.visible = false
+            this.player2.visible = false
         
         }
        // else if (this.keys.P.isDown){
