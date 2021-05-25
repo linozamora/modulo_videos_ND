@@ -4,7 +4,7 @@ import Characterselector2 from './scenes/Characterselector2.js';
 import Firstscene from './scenes/Firstscene.js'
 import gameboy from './scenes/gameboy.js';
 import MenuselectorS from './scenes/MenuselectorS.js';
-import Sceneselector from './scenes/Sceneselector.js';
+import SceneSelector from './scenes/Sceneselector.js';
 import Start from './scenes/Start.js';
 import Fin from './scenes/Fin.js';
 import Countdown from './scenes/Countdown.js';
@@ -31,19 +31,19 @@ const config = {
     banner: {
         hidePhaser: true, // OCULTAR TEXTO DE PHASER EN CONSOLA
         text: '#000000', // CAMBIAR COLOR DEL TEXTO DEL TITULO DEL JUEGO EN CONSOLA
-         // PALETA DE COLORES DE ADORNO EN CONSOLA
+        // PALETA DE COLORES DE ADORNO EN CONSOLA
         background: [
             'red',
             'yellow',
             'red',
             'transparent'
         ]
-       
+
     },
     scale: {    // CONFIGURACIÓN PARA RESPONSIVE
-      mode: Phaser.Scale.FIT,
-      autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+    },
     physics: {  //CONFIGURACIÓN DE FISICAS DEL PERSONAJE --- GRAVEDAD GENERAL
         default: 'arcade',
         arcade: {
@@ -53,7 +53,7 @@ const config = {
     },
 
     //ESCENAS DEL JUEGO
-    scene: [Start, Sceneselector, Characterselector, 
+    scene: [Start, SceneSelector, Characterselector,
         Characterselector2, Firstscene, Fin]
 };
 

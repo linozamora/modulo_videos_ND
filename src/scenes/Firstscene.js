@@ -1,5 +1,21 @@
 import Countdown from "./Countdown.js";
 
+const scenes = {
+    0: 'carro',
+    1: 'casa',
+    2: 'circo',
+    3: 'parque'
+}
+
+const characters = {
+    0: 'boysprite1',
+    1: 'boysprite2',
+    2: 'boysprite3',
+    3: 'girlsprite1',
+    4: 'girlsprite2',
+    5: 'girlsprite3',
+}
+
 class Firstscene extends Phaser.Scene {
 
     /** @type {Countdown} */
@@ -18,30 +34,33 @@ class Firstscene extends Phaser.Scene {
 
     preload() {
         // LOAD IMAGES AND SPRITES
+        //console.log('Segundo personaje')
+        //console.log(this.game.personaje2)
+        this.load.image('final', 'assets/final.png')
+            .image('carro', 'assets/escenarios/carro.png')
+            .image('casa', 'assets/escenarios/casa.png')
+            .image('circo', 'assets/escenarios/circo.png')
+            .image('parque', 'assets/escenarios/parque.png')
+        //.image("bullet", "assets/bullet.png")
+        //.image("virus", "assets/virus.png")
+        this.load.spritesheet('girlsprite1', 'assets/SPRITENA1.png',
+            { frameWidth: 95, frameHeight: 230 })
 
-        this.load.image('background', 'assets/background.png')
-                 .image('final','assets/final.png')
-            //.image("bullet", "assets/bullet.png")
-            //.image("virus", "assets/virus.png")
-            .spritesheet('boysprite', 'assets/boysprite.png',
-                { frameWidth: 95, frameHeight: 230 }),
-            this.load.spritesheet('girlsprite', 'assets/girlsprite.png',
-                { frameWidth: 95, frameHeight: 230 });
+        this.load.spritesheet('girlsprite2', 'assets/SPRITENA2.png',
+            { frameWidth: 95, frameHeight: 230 })
+        this.load.spritesheet('girlsprite3', 'assets/SPRITENA3.png',
+            { frameWidth: 95, frameHeight: 230 })
 
+        this.load.spritesheet('boysprite1', 'assets/SPRITENO1.png',
+            { frameWidth: 95, frameHeight: 230 });
 
-        // LOAD AUDIOS
-
-        //this.load.audio('pop',['assets/pop.wav'])
-        //         .audio('shot',['assets/shot.wav'])
-        //         .audio('killed',['assets/killed.wav'])
-        //         .audio('rebound',['assets/rebound.wav'])
-        //         .audio('bgmusic',['assets/bgmusic.mp3']);
-
-
+        this.load.spritesheet('boysprite2', 'assets/SPRITENO2.png',
+            { frameWidth: 95, frameHeight: 230 });
+        this.load.spritesheet('boysprite3', 'assets/SPRITENO3.png',
+            { frameWidth: 95, frameHeight: 230 });
     }
 
     create() {
-
         const { width, height } = this.scale
 
         const timerLabel = this.add.text(width * 0.5, 50, '45', { fontSize: 48 }).setOrigin(0.5)
@@ -55,16 +74,10 @@ class Firstscene extends Phaser.Scene {
         //this.killedSound = this.sound.add('killed');
         //this.reboundSound = this.sound.add('rebound');
 
-        // BACKGROUND MUSIC
-
-        //this.backgroundMusic = this.sound.add('bgmusic');
-        //this.backgroundMusic.loop = true;
-        //this.backgroundMusic.play();
-
         // CREATE KEYBOARD CURSOS
         this.keys = this.input.keyboard.addKeys('A,W,S,D,F');
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.anims2 = this.anims;
+        //this.anims2 = this.anims;
 
         //SECOND PLAYER CONTROLS
         //upButton = game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -74,12 +87,16 @@ class Firstscene extends Phaser.Scene {
 
         // CREATE SPRITES
 
-        this.background = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, 'background');
+        this.background = this.add.image(this.sys.game.canvas.width / 2, this.sys.game.canvas.height / 2, `${scenes[this.registry.get('escenarioSeleccionado')]}`);
         //this.virus = this.physics.add.group({
         //    defaultKey: 'virus'
         //});
 
-        this.player = this.physics.add.sprite(this.sys.game.canvas.width / 3, this.sys.game.canvas.height, 'boysprite')
+
+        /**JUGADOR 1 */
+        //let player1 = new Personaje({ scene: this, x: this.sys.game.canvas.width / 3, y: this.sys.game.canvas.height - 120, type: 'boysprite' })
+
+        this.player = this.physics.add.sprite(this.sys.game.canvas.width / 3, this.sys.game.canvas.height, `${characters[this.registry.get('primerPersonajeSeleccionado')]}`)
             .setBounce(0.2)
             .setCollideWorldBounds(true)
             .setGravityY(500)
@@ -87,19 +104,24 @@ class Firstscene extends Phaser.Scene {
 
         this.animatePlayer();
 
-        //this.player2 = this.physics.add
-        this.player2 = this.physics.add.sprite(this.sys.game.canvas.width / 2, this.sys.game.canvas.height, 'girlsprite')
-            .setBounce(0.2)
-            .setCollideWorldBounds(true)
-            .setGravityY(500)
-            .setDepth(10);
+        /**JUGADOR 2 */
+        //let player2 = new Personaje({ scene: this, x: this.sys.game.canvas.width / 2, y: this.sys.game.canvas.height, type: 'girlsprite' })
 
-        this.animatePlayer2(); //HERE´S THE DIMENSION ERROR 
+
+        if (this.registry.get('segundoPersonajeSeleccionado') !== 0) {
+            this.player2 = this.physics.add.sprite(this.sys.game.canvas.width / 2, this.sys.game.canvas.height, `${characters[this.registry.get('segundoPersonajeSeleccionado')]}`)
+                .setBounce(0.2)
+                .setCollideWorldBounds(true)
+                .setGravityY(500)
+                .setDepth(10);
+
+            this.animatePlayer2(); //HERE´S THE DIMENSION ERROR 
+        }
 
         this.bullets = this.physics.add.group({
             defaultKey: 'bullet'
         });
-        
+
 
 
         // ADD COLIDERS BETWEEN SPRITES
@@ -116,78 +138,82 @@ class Firstscene extends Phaser.Scene {
 
         if (this.input.keyboard.checkDown(this.cursors.space, 250)) {
             this.player.setVelocity(0, 0)
-                .anims.play('turn');
+                .anims.play('turn_p1');
             //this.fire(this.player);
         }
         else if (this.cursors.left.isDown) {
             this.player.setVelocityX(-160)
-                .anims.play('left', true);
+                .anims.play('left_p1', true);
         }
         else if (this.cursors.right.isDown) {
             this.player.setVelocityX(160)
-                .anims.play('right', true);
+                .anims.play('right_p1', true);
         }
         else if (this.cursors.up.isDown) {
             this.player.setVelocity(-160)
             this.player.setVelocityX(0)
-                .anims.play('jump', true);
+                .anims.play('jump_p1', true);
         }
         else {
             this.player.setVelocityX(0)
-                .anims.play('turn');
+                .anims.play('turn_p1');
         }
-        //---PLAYER 2 CONTROLS---- 
-        if (this.keys.A.isDown) {
-            this.player2.setVelocityX(-160)
-                .anims.play('left', true);
+
+        if (this.registry.get('segundoPersonajeSeleccionado') !== 0) {
+            //---PLAYER 2 CONTROLS---- 
+            if (this.keys.A.isDown) {
+                this.player2.setVelocityX(-160)
+                    .anims.play('left_p2', true);
+            }
+            else if (this.keys.D.isDown) {
+                this.player2.setVelocityX(160)
+                    .anims.play('right_p2', true);
+            }
+            else if (this.keys.W.isDown) {
+                this.player2.setVelocity(-160)
+                this.player2.setVelocityX(0)
+                    .anims.play('jump_p2', true);
+            }
+            else {
+                this.player2.setVelocityX(0)
+                    .anims.play('turn_p2');
+            }
         }
-        else if (this.keys.D.isDown) {
-            this.player2.setVelocityX(160)
-                .anims.play('right', true);
-        }
-        else if (this.keys.W.isDown) {
-            this.player2.setVelocity(-160)
-            this.player2.setVelocityX(0)
-                .anims.play('jump', true);
-        }
-        else {
-            this.player2.setVelocityX(0)
-                .anims.play('turn');
-        }
+
         if (this.keys.F.isDown) {
             const { width, height } = this.scale
             //this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
-            this.add.image( width * 0.5, height * 0.5, 'final')
+            this.add.image(width * 0.5, height * 0.5, 'final')
             this.player.visible = false
             this.player2.visible = false
-        
+
         }
-       // else if (this.keys.P.isDown){
-       //     this.player.setVelocity(0, 0)
-       //         .anims.play('turn');
-        
-       // }
+        // else if (this.keys.P.isDown){
+        //     this.player.setVelocity(0, 0)
+        //         .anims.play('turn');
+
+        // }
         //if(this.keys.P.isDown){
-           
-        
-       // this.add.image( width * 0.5, height * 0.5, 'play'  
+
+
+        // this.add.image( width * 0.5, height * 0.5, 'play'  
         //);
-                       
+
         //}
         this.countdown.update()
-        console.log(this.timerLabel)
+        //console.log(this.timerLabel)
     }
 
 
     handleCowntdownFinished() {
         const { width, height } = this.scale
-       // this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
+        // this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
         //No funciona porque no elimina lo personajes
-        this.add.image( width * 0.5, height * 0.5, 'final' ) 
+        this.add.image(width * 0.5, height * 0.5, 'final')
         this.player.visible = false
-        this.player2.visible = false
-        //this.scene.pause();
-
+        if (this.registry.get('segundoPersonajeSeleccionado') !== 0)
+            this.player2.visible = false
+        //this.scene.pause();w
     }
 
 
@@ -199,71 +225,68 @@ class Firstscene extends Phaser.Scene {
         this.scene.pause();
     }
 
-    handleContinue()
-	{
-		this.scene.start('Fin', { character: this.selectedKey });
-	}
+    handleContinue() {
+        this.scene.start('Fin', { character: this.selectedKey });
+    }
 
     animatePlayer() {
         this.anims.create({
-            key: 'left',
-            frames: this.anims.generateFrameNumbers('boysprite', { start: 0, end: 3 }),
+            key: 'left_p1',
+            frames: this.anims.generateFrameNumbers(`${characters[this.registry.get('primerPersonajeSeleccionado')]}`, { start: 0, end: 3 }),
             frameRate: 10,
             repeat: -1
-
         });
 
         this.anims.create({
-            key: 'turn',
-            frames: [{ key: 'boysprite', frame: 4 }],
+            key: 'turn_p1',
+            frames: [{ key: `${characters[this.registry.get('primerPersonajeSeleccionado')]}`, frame: 4 }],
             frameRate: 20,
             // delay: 1.1
         });
         this.anims.create({
-            key: 'jump',
-            frames: [{ key: 'boysprite', frame: 10 }],
+            key: 'jump_p1',
+            frames: [{ key: `${characters[this.registry.get('primerPersonajeSeleccionado')]}`, frame: 10 }],
             frameRate: 20,
             // delay: 1.1
         });
         this.anims.create({
-            key: 'right',
-            frames: this.anims.generateFrameNumbers('boysprite', { start: 5, end: 8 }),
+            key: 'right_p1',
+            frames: this.anims.generateFrameNumbers(`${characters[this.registry.get('primerPersonajeSeleccionado')]}`, { start: 5, end: 8 }),
             frameRate: 10,
             repeat: -1
         });
 
 
     } //problem 
+
     animatePlayer2() {
-        this.anims2.create({
-            key: 'left',
-            frames: this.anims2.generateFrameNumbers('girlsprite', { start: 0, end: 3 }),
+        this.player2.anims.create({
+            key: 'left_p2',
+            frames: this.anims.generateFrameNumbers(`${characters[this.registry.get('segundoPersonajeSeleccionado')]}`, { start: 0, end: 3 }),
             frameRate: 10,
             repeat: -1
 
         });
 
-        this.anims2.create({
-            key: 'turn',
-            frames: [{ key: 'girlsprite', frame: 4 }],
+        this.player2.anims.create({
+            key: 'turn_p2',
+            frames: [{ key: `${characters[this.registry.get('segundoPersonajeSeleccionado')]}`, frame: 4 }],
             frameRate: 20,
             // delay: 1.1
         });
-        this.anims2.create({
-            key: 'jump',
-            frames: [{ key: 'girlsprite', frame: 10 }],
+        this.player2.anims.create({
+            key: 'jump_p2',
+            frames: [{ key: `${characters[this.registry.get('segundoPersonajeSeleccionado')]}`, frame: 10 }],
             frameRate: 20,
             // delay: 1.1
         });
 
-        this.anims2.create({
-            key: 'right',
-            frames: this.anims2.generateFrameNumbers('girlsprite', { start: 5, end: 8 }),
+        this.player2.anims.create({
+            key: 'right_p2',
+            frames: this.anims.generateFrameNumbers(`${characters[this.registry.get('segundoPersonajeSeleccionado')]}`, { start: 5, end: 8 }),
             frameRate: 10,
             repeat: -1
         });
-
-
     }
 
 }
