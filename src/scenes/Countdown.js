@@ -22,7 +22,7 @@ export default class Countdown {
      * @param {() => void} callback
      * @param {number} duration 
      */
-    start(callback, duration = 45000 ){       
+    start(callback, duration = 300000 ){       
        this.stop()
        
        this.finishedCallback = callback

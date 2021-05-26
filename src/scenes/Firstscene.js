@@ -59,7 +59,7 @@ class Firstscene extends Phaser.Scene {
         console.log('Escena', this.registry.getAll())
         const { width, height } = this.scale
 
-        const timerLabel = this.add.text(width * 0.5, 50, '45', { fontSize: 48 }).setOrigin(0.5)
+        const timerLabel = this.add.text(width * 0.5, 50, '300', { fontSize: 48 }).setOrigin(0.5)
 
         this.countdown = new Countdown(this, timerLabel)
         this.countdown.start(this.handleCowntdownFinished.bind(this))
@@ -181,8 +181,10 @@ class Firstscene extends Phaser.Scene {
             //this.add.text(width * 0.2, height * 0.2, 'Narración Finalizada', { fontSize: 60 })
             this.add.image(width * 0.5, height * 0.5, 'final')
             this.player.visible = false
-            this.player2.visible = false
-
+            if (this.registry.get('segundoPersonajeSeleccionado') !== null) {
+                this.player2.visible = false
+            }
+            this.countdown.stop()
         }
         // else if (this.keys.P.isDown){
         //     this.player.setVelocity(0, 0)
@@ -197,6 +199,7 @@ class Firstscene extends Phaser.Scene {
 
         //}
         this.countdown.update()
+        this.countdown.label.setDepth(100)
         //console.log(this.timerLabel)
     }
 

@@ -8,6 +8,7 @@ class Characterselector extends Phaser.Scene {
         this.registry.set('primerPersonajeSeleccionado', 1)
     }
     create() {
+        this.keys = this.input.keyboard.addKeys('F');
         console.log(this.registry.getAll())
         //const graphics = this.add.graphics({          //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
         //    lineStyle: {width:2, color: 0x00ff00}     //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
@@ -76,8 +77,17 @@ class Characterselector extends Phaser.Scene {
         //graphics.strokeEllipseShape(elipse, totalItems);  //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
         this.start = this.input.keyboard.once('keydown-SPACE', this.handleContinue, this);
     }
+    update(time, delta){
+        if (this.keys.F.isDown) {
+            this.handleContinue2();
+        }
+    }
     handleContinue() {
         this.scene.start('Characterselector2', { character: this.selectedKey });
+    }
+    handleContinue2() {
+        this.registry.set('segundoPersonajeSeleccionado', null)
+        this.scene.start('Firstscene', { character: this.selectedKey }); 
     }
 }
 
