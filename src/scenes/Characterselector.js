@@ -5,7 +5,7 @@ class Characterselector extends Phaser.Scene {
     preload() {
         this.load.atlas('personajes', './assets/personajes.png', './assets/personajes_atlas.json')
         this.load.image('backgpers', 'assets/backpers1.png');
-        this.registry.set('primerPersonajeSeleccionado', 0)
+        this.registry.set('primerPersonajeSeleccionado', 1)
     }
     create() {
         console.log(this.registry.getAll())
@@ -55,6 +55,7 @@ class Characterselector extends Phaser.Scene {
 
                 if (x === 683 && y === 490) {
                     this.registry.set('primerPersonajeSeleccionado', index)
+                    console.log('Primero', index)
                 }
 
                 this.tweens.add({

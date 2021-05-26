@@ -1,19 +1,17 @@
 import Countdown from "./Countdown.js";
 
 const scenes = {
-    0: 'carro',
-    1: 'casa',
-    2: 'circo',
-    3: 'parque'
+    0: 'casa',
+    1: 'carro',
+    2: 'parque',
+    3: 'circo'
 }
 
 const characters = {
     0: 'boysprite1',
-    1: 'boysprite2',
-    2: 'boysprite3',
-    3: 'girlsprite1',
-    4: 'girlsprite2',
-    5: 'girlsprite3',
+    1: 'girlsprite1',
+    2: 'boysprite2',
+    3: 'girlsprite2',
 }
 
 class Firstscene extends Phaser.Scene {
@@ -33,6 +31,8 @@ class Firstscene extends Phaser.Scene {
     }
 
     preload() {
+        this.primerPersonaje = this.registry.get('primerPersonajeSeleccionado');
+        this.segundoPersonaje = this.registry.get('segundoPersonajeSeleccionado');
         // LOAD IMAGES AND SPRITES
         //console.log('Segundo personaje')
         //console.log(this.game.personaje2)
@@ -45,10 +45,7 @@ class Firstscene extends Phaser.Scene {
         //.image("virus", "assets/virus.png")
         this.load.spritesheet('girlsprite1', 'assets/SPRITENA1.png',
             { frameWidth: 95, frameHeight: 230 })
-
         this.load.spritesheet('girlsprite2', 'assets/SPRITENA2.png',
-            { frameWidth: 95, frameHeight: 230 })
-        this.load.spritesheet('girlsprite3', 'assets/SPRITENA3.png',
             { frameWidth: 95, frameHeight: 230 })
 
         this.load.spritesheet('boysprite1', 'assets/SPRITENO1.png',
@@ -56,11 +53,10 @@ class Firstscene extends Phaser.Scene {
 
         this.load.spritesheet('boysprite2', 'assets/SPRITENO2.png',
             { frameWidth: 95, frameHeight: 230 });
-        this.load.spritesheet('boysprite3', 'assets/SPRITENO3.png',
-            { frameWidth: 95, frameHeight: 230 });
     }
 
     create() {
+        console.log('Escena', this.registry.getAll())
         const { width, height } = this.scale
 
         const timerLabel = this.add.text(width * 0.5, 50, '45', { fontSize: 48 }).setOrigin(0.5)
@@ -96,7 +92,7 @@ class Firstscene extends Phaser.Scene {
         /**JUGADOR 1 */
         //let player1 = new Personaje({ scene: this, x: this.sys.game.canvas.width / 3, y: this.sys.game.canvas.height - 120, type: 'boysprite' })
 
-        this.player = this.physics.add.sprite(this.sys.game.canvas.width / 3, this.sys.game.canvas.height, `${characters[this.registry.get('primerPersonajeSeleccionado')]}`)
+        this.player = this.physics.add.sprite(this.sys.game.canvas.width / 3, this.sys.game.canvas.height, `${characters[this.primerPersonaje]}`)
             .setBounce(0.2)
             .setCollideWorldBounds(true)
             .setGravityY(500)
@@ -108,8 +104,8 @@ class Firstscene extends Phaser.Scene {
         //let player2 = new Personaje({ scene: this, x: this.sys.game.canvas.width / 2, y: this.sys.game.canvas.height, type: 'girlsprite' })
 
 
-        if (this.registry.get('segundoPersonajeSeleccionado') !== 0) {
-            this.player2 = this.physics.add.sprite(this.sys.game.canvas.width / 2, this.sys.game.canvas.height, `${characters[this.registry.get('segundoPersonajeSeleccionado')]}`)
+        if (this.registry.get('segundoPersonajeSeleccionado') !== null) {
+            this.player2 = this.physics.add.sprite(this.sys.game.canvas.width / 2, this.sys.game.canvas.height, `${characters[this.segundoPersonaje]}`)
                 .setBounce(0.2)
                 .setCollideWorldBounds(true)
                 .setGravityY(500)
@@ -159,7 +155,7 @@ class Firstscene extends Phaser.Scene {
                 .anims.play('turn_p1');
         }
 
-        if (this.registry.get('segundoPersonajeSeleccionado') !== 0) {
+        if (this.registry.get('segundoPersonajeSeleccionado') !== null) {
             //---PLAYER 2 CONTROLS---- 
             if (this.keys.A.isDown) {
                 this.player2.setVelocityX(-160)
@@ -211,7 +207,7 @@ class Firstscene extends Phaser.Scene {
         //No funciona porque no elimina lo personajes
         this.add.image(width * 0.5, height * 0.5, 'final')
         this.player.visible = false
-        if (this.registry.get('segundoPersonajeSeleccionado') !== 0)
+        if (this.registry.get('segundoPersonajeSeleccionado') !== null)
             this.player2.visible = false
         //this.scene.pause();w
     }

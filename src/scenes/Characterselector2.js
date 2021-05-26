@@ -5,8 +5,10 @@ class Characterselector2 extends Phaser.Scene {
     preload() {
         this.load.atlas('personajes', './assets/personajes.png', './assets/personajes_atlas.json')
         this.load.image('backgpers2', 'assets/backpers2.png');
+        this.registry.set('segundoPersonajeSeleccionado', 1)
     }
     create() {
+        console.log('Segundo', this.registry.getAll())
         //const graphics = this.add.graphics({          //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
         //    lineStyle: {width:2, color: 0x00ff00}     //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
         //});                                           //OCULTAR LAS LINEAS DE LA FIGURA GEOMETRICA
@@ -52,6 +54,7 @@ class Characterselector2 extends Phaser.Scene {
 
                 if (x === 683 && y === 490) {
                     this.registry.set('segundoPersonajeSeleccionado', index)
+                    console.log('Segundo', index)
                 }
 
                 this.tweens.add({

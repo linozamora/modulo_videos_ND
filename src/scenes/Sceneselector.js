@@ -5,7 +5,7 @@ class Sceneselector extends Phaser.Scene {
     preload() {
         this.load.atlas('escenarios', './assets/escenarios.png', './assets/escenarios_atlas.json')
         this.load.image('backesc', 'assets/backesc.png');
-        this.registry.set('escenarioSeleccionado', 0);
+        this.registry.set('escenarioSeleccionado', 1);
     }
 
     create() {
